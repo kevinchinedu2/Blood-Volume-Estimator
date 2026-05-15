@@ -1,0 +1,40 @@
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.medical-card {
+    background: #ffffff;
+    border-left: 5px solid #2ecc71;
+    /* Green accent for health */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.2s;
+}
+
+.medical-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.card-body h3 {
+    margin: 5px 0;
+    color: #2c3e50;
+}
+
+.card-footer {
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: #95a5a6;
+}

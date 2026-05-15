@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>  <html lang="en">    <head>    
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Blood Volume Dashboard</title>    
+    <link rel="stylesheet" href="style.css">    
+</head>    
+<body>    
+    <div class="nav-header">
+        <button style=""color:darkgreen";"><a href="history.html" class="history-link">History</a></button>
+        
+        <button class="btn"><a href="profile.html" class="profile">Profile</a></button>
+    </div>    
+    <div class="dashboard-container" id="main-dashboard">    
+        <div class="card card-inputs">    
+            <h2>Patient Metrics</h2>    
+            <div class="input-group">    
+                <label>Sex</label>    
+                <select id="sex">    
+                    <option value="male">Male</option>    
+                    <option value="female">Female</option>    
+                </select>    
+            </div>    
+            <div class="input-group">    
+                <label>Height (cm)</label>    
+                <input type="number" id="height" placeholder="e.g. 175">    
+            </div>    
+            <div class="input-group">    
+                <label>Weight (kg)</label>    
+                <input type="number" id="weight" placeholder="e.g. 70">    
+            </div>    
+            <div class="input-group">    
+                <label aria-disabled>Current Blood Volume (Liters) </label>
+                <input type="number" id="current-blood" placeholder="Optional"> 
+            </div>    
+        </div>  <div class="card card-results">    
+        <h2>System Status</h2>    
+        <div class="radar-container">    
+            <div class="circular-progress">    
+                <span id="percentage-text">100%</span>    
+            </div>    
+            <span class="radar-label">Blood Volume Status</span>    
+        </div>    
+        <button id="calculate-btn" class="action-btn">Check My New Blood Volume</button>    
+    </div>    
+</div>    <div class="modal-overlay" id="modal-overlay">    
+    <div class="modal-content">    
+        <h2>Your Analysis</h2>    
+        <div class="hero-container">    
+            <span class="hero-label">Calculated Blood Volume</span>    
+            <h1 id="hero-number">0.00<span>L</span></h1>    
+        </div>    
+        <div class="status-box">    
+            <p id="description-text">Press the button to calculate.</p>    
+        </div>
+        <button class="close-btn" id="close-modal">Dismiss</button>    
+    </div>    
+</div>   
+<script type="module" src="script.js"></script>
+</body>    
+</html>

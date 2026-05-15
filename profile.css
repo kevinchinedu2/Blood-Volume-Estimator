@@ -1,0 +1,127 @@
+ body { 
+            font-family: sans-serif; 
+            background: #f4f6f9; 
+            padding: 20px; 
+            margin: 0;
+        }
+        .profile-container { 
+            background: white; 
+            max-width: 500px; 
+            margin: 20px auto; 
+            padding: 25px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+        h2 { 
+            text-align: center; 
+            color: #333;
+            margin-top: 0;
+        }
+        .avatar-upload { 
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+        .avatar-upload img { 
+            width: 100px; 
+            height: 100px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid #ddd;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        .avatar-upload label {
+            background: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .avatar-upload input[type="file"] {
+            display: none; /* Hide the ugly default file button */
+        }
+        .form-group { 
+            margin-bottom: 15px; 
+        }
+        .form-group label { 
+            display: block; 
+            margin-bottom: 5px; 
+            font-weight: bold; 
+            color: #555;
+        }
+        .form-group input, .form-group select { 
+            width: 100%; 
+            padding: 10px; 
+            box-sizing: border-box; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            font-size: 16px;
+        }
+        
+        /* The Dynamic Button Styles you asked for */
+        #updateBtn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: not-allowed;
+            background-color: #555; /* Default: Darkish, disabled look */
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        #updateBtn.active {
+            background-color: #28a745; /* Active: Bright Green */
+            cursor: pointer;
+        }
+        display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: green;
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1000;
+            border-radius: 8px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }

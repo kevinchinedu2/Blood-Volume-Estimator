@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About</title>
+  <link rel="stylesheet" href="about.css">
+</head>
+
+<body>
+  <div class="scroll-container">
+    <div class="scroll-text">
+        <h2>About Blood Volume Estimator</h2>
+        <p>This project was born out of a desire to merge clinical accuracy with modern web technology. By using established medical formulas, this tool provides a seamless way for users to understand their physiological metrics.</p>
+        
+        <p>The backend is powered by a robust MySQL architecture, ensuring that every height and weight entry is processed securely and stored for your future reference.</p>
+        
+        <p>As I continue to develop this platform, the goal remains the same: to provide a fast, reliable, and accessible health utility that works perfectly on both desktop and mobile devices.</p>
+        
+        <p>Thank you for using the tool. Stay tuned for future updates as we transition toward a dedicated mobile application experience.</p>
+        
+        <div class="stats-box">
+            <p>Logged in as: <strong><?php echo $_SESSION['username']; ?></strong></p>
+            <p>Total calculations performed: <strong><?php echo $total_calculations; ?></strong></p>
+        </div>
+    </div>
+</div>
+
+<div class="button-container">
+    <a href="profile.html" class="ok-btn">OK</a>
+</div>
+
+</body>
+</html>
