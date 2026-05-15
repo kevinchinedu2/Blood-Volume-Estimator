@@ -77,7 +77,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     });
 
     showStatus("Registration Successful!");
-    setTimeout(() => switchTab('login'), 1500); 
+    setTimeout(() => switchTab('dashboard'), 1500); 
   } catch (error) {
     showStatus(error.message, true);
   }
@@ -96,7 +96,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     await signInWithEmailAndPassword(auth, email, password);
     showStatus("Login Successful!");
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'dashboard.html';
     }, 1000);
   } catch (error) {
     showStatus("Login failed: " + error.message, true);
