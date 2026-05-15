@@ -77,7 +77,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     });
 
     showStatus("Registration Successful!");
-    setTimeout(() => switchTab('dashboard'), 1500); 
+    setTimeout(() => switchTab('index'), 1500); 
   } catch (error) {
     showStatus(error.message, true);
   }
