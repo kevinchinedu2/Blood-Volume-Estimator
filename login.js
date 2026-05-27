@@ -1,8 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// 1. Your Firebase Configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAqrxvB5yCQtnj0hf8NWzATad8uUY5DkSU",
   authDomain: "blood-volume-estimator.firebaseapp.com",
@@ -12,16 +11,10 @@ const firebaseConfig = {
   appId: "1:37511784419:web:41ce1639ed3880ce2762d6"
 };
 
-// 2. Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-/**
- * HELPER FUNCTION: Display Messages
- * This replaces the "alert()" and removes the "localhost" header.
- * Make sure you have an element with id="message-box" in your HTML.
- */
 function showStatus(message, isError = false) {
   const msgBox = document.getElementById('message-box');
   if (msgBox) {
@@ -29,15 +22,12 @@ function showStatus(message, isError = false) {
     msgBox.style.color = isError ? "#ff4d4d" : "#2ecc71";
     msgBox.style.display = "block";
     
-    // Auto-hide after 4 seconds
     setTimeout(() => { msgBox.style.display = "none"; }, 4000);
   } else {
-    // Fallback if you haven't added the HTML element yet
     console.log(message);
   }
 }
 
-// 3. Tab Switching Logic
 window.switchTab = function(tabId) {
   document.querySelectorAll('.form-content').forEach(form => form.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -48,7 +38,6 @@ window.switchTab = function(tabId) {
   if (tabId === 'login') buttons[1].classList.add('active');
 }
 
-// 4. Handle Registration
 document.getElementById('register-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   
@@ -63,7 +52,7 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
     return;
   }
 
-  showStatus("Processing registration..."); // "Just a processor" phase
+  showStatus("Processing registration...");
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -83,7 +72,6 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
   }
 });
 
-// 5. Handle Login
 document.getElementById('login-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   
@@ -100,5 +88,28 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     }, 1000);
   } catch (error) {
     showStatus("Login failed: " + error.message, true);
+  }
+});
+
+document.getElementById('forgot-password-link').addEventListener('click', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('login-email').value;
+
+  if (!email) {
+    showStatus("Please enter your email in the login box.", true);
+    return;
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, email);
+    showStatus("A reset link has been sent to your email.");
+  } catch (error) {
+    if (error.code === 'auth/user-not-found') {
+      showStatus("No account found with this email address.", true);
+    } else if (error.code === 'auth/invalid-email') {
+      showStatus("Please enter a valid email address.", true);
+    } else {
+      showStatus("Error: " + error.message, true);
+    }
   }
 });
