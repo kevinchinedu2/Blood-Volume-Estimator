@@ -13,19 +13,17 @@ const firebaseConfig = {
   appId: "1:37511784419:web:41ce1639ed3880ce2762d6"
 };
 
-// 2. Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
 let currentUser = null;
 
-// 3. Check if user is logged in
 onAuthStateChanged(auth, (user) => {
 if (user) {
 currentUser = user;
 } else {
-// If not logged in, send them to login page
 window.location.href = 'index.html';
 }
 });
@@ -61,7 +59,6 @@ if (currentBlood === "") {
     calculatedLiters = parseFloat(currentBlood);    
 }    
 
-// Percentage Logic    
 let visualPercentage = (calculatedLiters / 5.5) * 100;    
 if (visualPercentage > 100) visualPercentage = 100;    
 if (visualPercentage < 0) visualPercentage = 0;    
@@ -94,8 +91,7 @@ if (circularProgress) {
     const degrees = visualPercentage * 3.6;    
     circularProgress.style.background = `conic-gradient(${ringColor} ${degrees}deg, #ecf0f1 ${degrees}deg)`;    
 }    
-
-// SAVE TO FIREBASE    
+    
 await saveToFirebase(calculatedLiters.toFixed(2), remark, sex, height, weight);    
 
 mainDashboard.classList.add('blurred');    
@@ -114,7 +110,7 @@ try {
         weight: weight,    
         bloodVolume: liters,    
         remark: remark,    
-        timestamp: serverTimestamp() // Using server time for accuracy    
+        timestamp: serverTimestamp()    
     });    
     console.log("Report saved to Firebase History!");    
 } catch (e) {    
