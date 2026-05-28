@@ -15,20 +15,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-let currentUser = null;
-
-onAuthStateChanged(auth, (user) => {
-if (user) {
-currentUser = user;
-} else {
-window.location.href = 'index.html';
-}
-});
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
 function showStatus(message, isError = false) {
   const msgBox = document.getElementById('message-box');
   if (msgBox) {
