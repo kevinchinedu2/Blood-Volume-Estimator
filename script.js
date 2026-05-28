@@ -26,7 +26,7 @@ if (user) {
 currentUser = user;
 } else {
 // If not logged in, send them to login page
-window.location.href = 'login.html';
+window.location.href = 'index.html';
 }
 });
 
